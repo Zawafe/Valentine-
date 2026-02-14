@@ -2,45 +2,138 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      overflow: hidden;
+    }
 
-  <title>Course Registration</title>
-  <link rel="stylesheet" href="main.css">
+    .card {
+      text-align: center;
+      background: white;
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 30px;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+  background: #999;
+  color: white;
+  position: absolute;
+  right: -80px;
+  width: 90px;     /* lock size */
+  height: 45px;   /* lock size */
+}
+
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 30px 50px;
+      border-radius: 15px;
+      text-align: center;
+      animation: pop 0.3s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Course Registration Form</h2>
-    <form id="registrationForm">
-      <label for="name">Student Name:</label>
-      <input type="text" id="name" name="name" required>
 
-      <label for="matric">Matric Number:</label>
-      <input type="text" id="matric" name="matric" required>
-
-      <label for="level">Level:</label>
-      <select id="level" name="level" required>
-        <option value="">Select Level</option>
-        <option value="100">100</option>
-        <option value="200">200</option>
-        <option value="300">300</option>
-        <option value="400">400</option>
-      </select>
-
-      <label for="department">Department:</label>
-      <input type="text" id="department" name="department" required>
-
-      <fieldset>
-        <legend>Select Courses (Max 3)</legend>
-        <label><input type="checkbox" name="courses" value="Mathematics"> Mathematics</label>
-        <label><input type="checkbox" name="courses" value="Physics"> Physics</label>
-        <label><input type="checkbox" name="courses" value="Chemistry"> Chemistry</label>
-        <label><input type="checkbox" name="courses" value="Biology"> Biology</label>
-        <label><input type="checkbox" name="courses" value="Computer Science"> Computer Science</label>
-      </fieldset>
-
-      <button type="submit">Submit</button>
-    </form>
+  <div class="card">
+    <h1>Will you be my Valentine? 💕</h1>
+    <div class="btn-row">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
   </div>
-  <script src="script.js"></script>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h2>Thank you, my love ❤️</h2>
+      <p>You just made my day!</p>
+    </div>
+  </div>
+
+  <script>
+  
+const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const popup = document.getElementById("popup");
+
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
+
+  function moveNoButton() {
+    const x = Math.random() * (window.innerWidth - btnWidth);
+    const y = Math.random() * (window.innerHeight - btnHeight);
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+
+  noBtn.addEventListener("mouseover", moveNoButton);
+  noBtn.addEventListener("click", moveNoButton);
+
+  yesBtn.addEventListener("click", () => {
+  popup.style.display = "flex";
+});
+
+// close when clicking outside popup
+popup.addEventListener("click", (e) => {
+  if (e.target === popup) {
+    popup.style.display = "none";
+  }
+});
+</script>
+
+
 </body>
 </html>
