@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Course Registration</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Course Registration Form</h2>
+    <form id="registrationForm">
+      <label for="name">Student Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="matric">Matric Number:</label>
+      <input type="text" id="matric" name="matric" required>
+
+      <label for="level">Level:</label>
+      <select id="level" name="level" required>
+        <option value="">Select Level</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="300">300</option>
+        <option value="400">400</option>
+      </select>
+
+      <label for="department">Department:</label>
+      <input type="text" id="department" name="department" required>
+
+      <fieldset>
+        <legend>Select Courses (Max 3)</legend>
+        <label><input type="checkbox" name="courses" value="Mathematics"> Mathematics</label>
+        <label><input type="checkbox" name="courses" value="Physics"> Physics</label>
+        <label><input type="checkbox" name="courses" value="Chemistry"> Chemistry</label>
+        <label><input type="checkbox" name="courses" value="Biology"> Biology</label>
+        <label><input type="checkbox" name="courses" value="Computer Science"> Computer Science</label>
+      </fieldset>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
